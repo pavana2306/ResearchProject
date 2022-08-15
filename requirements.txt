@@ -1,2 +1,7 @@
 pandas
 nltk
+transformers
+torch
+sklearn
+flask
+keras
