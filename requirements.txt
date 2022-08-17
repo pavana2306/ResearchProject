@@ -1,7 +1,10 @@
-pandas
-nltk
 transformers
 torch
 sklearn
 flask
-keras
+Keras==2.4.3
+tensorflow==2.3.1
+nltk==3.4.5
+numpy==1.18.1
+pandas==1.0.3
+vaderSentiment
