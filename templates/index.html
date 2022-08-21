@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Applying Bidirectional Encoder Representations from Transformers (BERT) and Vader for Sentiment Analysis on Pharmaceutical Drug Reviews</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link href="../static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all" />
+<!--// css -->
+<link rel="stylesheet" href="../static/css/owl.carousel.css" type="text/css" media="all">
+<link href="../static/css/owl.theme.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../static/css/cm-overlay.css" />
+<!-- font-awesome icons -->
+<link href="../static/css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- font -->
+<link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<!--script src="../static/js/jquery-1.11.1.min.js"></script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<!-- menu -->
+<link rel="stylesheet" href="../static/css/main.css">
+<!-- //menu -->
+<script>
+$(document).ready(function() {
+	$('#but_upload').click(function (event) {
+    event.preventDefault();
+		  $.ajax({
+			type: "GET",
+			url: "http://127.0.0.1:5000/index",
+			data: "input_Text="+ $("textarea#input_sentence").val(),
+			  contentType:"application/json; charset=utf-8",
+			  dataType:"json",
+			success: function(response){
+			   $("#model_result").empty();
+			   if(response != 0){
+					if(response.prediction == "POS") {
+						$("#model_result").text("Positive Result. BERT & Vader combined probability score: " + response.probability);
+					}
+					else{
+						$("#model_result").text("Negative Result. BERT & Vader combined probability score: " + response.probability);
+					}
+				}
+			},
+		  });
+    return false;
+});
+});
+</script>
+</head>
+<body>
+	<!-- banner -->
+	<div class="banner">
+		<div class="container">
+			<div class="agile-logo">
+				<h1><a href="index.html"><span>Applying Bidirectional Encoder Representations from Transformers (BERT) and Vader for Sentiment Analysis on Pharmaceutical Drug Reviews</span></a></h1>
+			</div>
+			<div class="w3l-banner-grids">
+				<div class="col-md-8 w3ls-banner-right">
+					<div class="banner-right-info">
+						<h2>Main objective of this research is to perform sentiment analysis on the Pharma Drug Reviews using Bidirectional Encoder Representations from Transformers (BERT)
+							and combine the results of the sentiment score from Vader Sentiment to obtain the overall sentiment score.</h2>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4 w3ls-banner-left">
+					<div class="w3ls-banner-left-info">
+						<h4>Student Name</h4>
+						<p>Pavana Chesty</p>
+					</div>
+					<div class="w3ls-banner-left-info">
+						<h4>Student ID</h4>
+						<p>10594720</p>
+					</div>
+					<div class="w3ls-banner-left-info">
+						<h4>Coordinator</h4>
+						<p>Mr. Paul Laird</p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- about -->
+	<div class="about">
+		<div class="container">
+				<div class="col-md-12 wthree-about-right">
+					<h3>Enter the drug review to find the sentiment of the text:</h3>
+					<div class="mt-5">
+					<div class="form-group">
+						<label class="col-sm-4 control-label">Review Text:</label>
+						<div class="col-sm-8">
+							<textarea rows="6" placeholder="This is the best healthcare product which I would recommend for all age group." class="form-control" id="input_sentence"></textarea>
+							<button type="button" id="but_upload" value="Test the Model" style="margin-top:1em;">Find Sentiment</button>
+						</div>
+					</div>
+					<h3>Model results:</h3>
+					<div><span id="model_result" style="color: red"></span></div>
+                    </div>
+					</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //about -->
+	<!-- copyright -->
+	<div class="agileits-w3layouts-footer">
+		<div class="container">
+			<p>© 2022 Dublin Business School</p>
+		</div>
+	</div>
+	<!-- //copyright -->
+	<script src="../static/js/bars.js"></script>
+	<script src="../static/js/owl.carousel.js"></script>
+</body>
+</html>
